@@ -1,0 +1,334 @@
+[
+  {
+    "name": "stimulus.wav",
+    "seconds": 25.24,
+    "whole_rms_dbfs": -26.01,
+    "whole_peak_dbfs": -5.61,
+    "lag_samples_vs_reference": 0,
+    "lag_ms_vs_reference": 0.0,
+    "correlation_vs_reference": 1.0,
+    "segments": [
+      {
+        "segment": "room_or_silence",
+        "rms_dbfs": -Infinity,
+        "peak_dbfs": -Infinity,
+        "samples": 48000,
+        "0-300Hz_share": 0.0,
+        "300-3400Hz_share": 0.0,
+        "3400-8000Hz_share": 0.0
+      },
+      {
+        "segment": "beep",
+        "rms_dbfs": -15.05,
+        "peak_dbfs": -12.04,
+        "samples": 7200,
+        "0-300Hz_share": 0.0,
+        "300-3400Hz_share": 1.0,
+        "3400-8000Hz_share": 0.0
+      },
+      {
+        "segment": "gap",
+        "rms_dbfs": -Infinity,
+        "peak_dbfs": -Infinity,
+        "samples": 16800,
+        "0-300Hz_share": 0.0,
+        "300-3400Hz_share": 0.0,
+        "3400-8000Hz_share": 0.0
+      },
+      {
+        "segment": "speech",
+        "rms_dbfs": -23.32,
+        "peak_dbfs": -6.0,
+        "samples": 353760,
+        "0-300Hz_share": 0.2079,
+        "300-3400Hz_share": 0.7804,
+        "3400-8000Hz_share": 0.008
+      },
+      {
+        "segment": "noise",
+        "rms_dbfs": -32.65,
+        "peak_dbfs": -18.0,
+        "samples": 192000,
+        "0-300Hz_share": 0.2808,
+        "300-3400Hz_share": 0.6029,
+        "3400-8000Hz_share": 0.0701
+      },
+      {
+        "segment": "speech_plus_noise",
+        "rms_dbfs": -22.64,
+        "peak_dbfs": -5.61,
+        "samples": 192000,
+        "0-300Hz_share": 0.3763,
+        "300-3400Hz_share": 0.605,
+        "3400-8000Hz_share": 0.0113
+      },
+      {
+        "segment": "quiet_voice",
+        "rms_dbfs": -43.33,
+        "peak_dbfs": -26.0,
+        "samples": 353760,
+        "0-300Hz_share": 0.2078,
+        "300-3400Hz_share": 0.7806,
+        "3400-8000Hz_share": 0.0079
+      },
+      {
+        "segment": "tail",
+        "rms_dbfs": -Infinity,
+        "peak_dbfs": -Infinity,
+        "samples": 48000,
+        "0-300Hz_share": 0.0,
+        "300-3400Hz_share": 0.0,
+        "3400-8000Hz_share": 0.0
+      }
+    ]
+  },
+  {
+    "name": "stimulus-lull.wav",
+    "seconds": 25.24,
+    "whole_rms_dbfs": -27.02,
+    "whole_peak_dbfs": -6.0,
+    "lag_samples_vs_reference": 1440,
+    "lag_ms_vs_reference": 30.0,
+    "correlation_vs_reference": 0.917,
+    "segments": [
+      {
+        "segment": "room_or_silence",
+        "rms_dbfs": -92.54,
+        "peak_dbfs": -65.2,
+        "samples": 48000,
+        "0-300Hz_share": 0.2048,
+        "300-3400Hz_share": 0.79,
+        "3400-8000Hz_share": 0.0025
+      },
+      {
+        "segment": "beep",
+        "rms_dbfs": -Infinity,
+        "peak_dbfs": -Infinity,
+        "samples": 7200,
+        "0-300Hz_share": 0.0,
+        "300-3400Hz_share": 0.0,
+        "3400-8000Hz_share": 0.0
+      },
+      {
+        "segment": "gap",
+        "rms_dbfs": -Infinity,
+        "peak_dbfs": -Infinity,
+        "samples": 16800,
+        "0-300Hz_share": 0.0,
+        "300-3400Hz_share": 0.0,
+        "3400-8000Hz_share": 0.0
+      },
+      {
+        "segment": "speech",
+        "rms_dbfs": -23.49,
+        "peak_dbfs": -6.0,
+        "samples": 353760,
+        "0-300Hz_share": 0.2065,
+        "300-3400Hz_share": 0.7819,
+        "3400-8000Hz_share": 0.008
+      },
+      {
+        "segment": "noise",
+        "rms_dbfs": -63.71,
+        "peak_dbfs": -34.97,
+        "samples": 192000,
+        "0-300Hz_share": 0.9924,
+        "300-3400Hz_share": 0.0056,
+        "3400-8000Hz_share": 0.0017
+      },
+      {
+        "segment": "speech_plus_noise",
+        "rms_dbfs": -23.68,
+        "peak_dbfs": -6.15,
+        "samples": 192000,
+        "0-300Hz_share": 0.4033,
+        "300-3400Hz_share": 0.5908,
+        "3400-8000Hz_share": 0.003
+      },
+      {
+        "segment": "quiet_voice",
+        "rms_dbfs": -70.23,
+        "peak_dbfs": -41.3,
+        "samples": 353760,
+        "0-300Hz_share": 0.1743,
+        "300-3400Hz_share": 0.1109,
+        "3400-8000Hz_share": 0.2581
+      },
+      {
+        "segment": "tail",
+        "rms_dbfs": -Infinity,
+        "peak_dbfs": -Infinity,
+        "samples": 46560,
+        "0-300Hz_share": 0.0,
+        "300-3400Hz_share": 0.0,
+        "3400-8000Hz_share": 0.0
+      }
+    ]
+  },
+  {
+    "name": "stimulus-nc-only.wav",
+    "seconds": 25.24,
+    "whole_rms_dbfs": -26.96,
+    "whole_peak_dbfs": -6.0,
+    "lag_samples_vs_reference": 1440,
+    "lag_ms_vs_reference": 30.0,
+    "correlation_vs_reference": 0.9221,
+    "segments": [
+      {
+        "segment": "room_or_silence",
+        "rms_dbfs": -92.54,
+        "peak_dbfs": -65.2,
+        "samples": 48000,
+        "0-300Hz_share": 0.2048,
+        "300-3400Hz_share": 0.79,
+        "3400-8000Hz_share": 0.0025
+      },
+      {
+        "segment": "beep",
+        "rms_dbfs": -Infinity,
+        "peak_dbfs": -Infinity,
+        "samples": 7200,
+        "0-300Hz_share": 0.0,
+        "300-3400Hz_share": 0.0,
+        "3400-8000Hz_share": 0.0
+      },
+      {
+        "segment": "gap",
+        "rms_dbfs": -Infinity,
+        "peak_dbfs": -Infinity,
+        "samples": 16800,
+        "0-300Hz_share": 0.0,
+        "300-3400Hz_share": 0.0,
+        "3400-8000Hz_share": 0.0
+      },
+      {
+        "segment": "speech",
+        "rms_dbfs": -23.45,
+        "peak_dbfs": -6.0,
+        "samples": 353760,
+        "0-300Hz_share": 0.2069,
+        "300-3400Hz_share": 0.7817,
+        "3400-8000Hz_share": 0.0079
+      },
+      {
+        "segment": "noise",
+        "rms_dbfs": -62.46,
+        "peak_dbfs": -34.97,
+        "samples": 192000,
+        "0-300Hz_share": 0.983,
+        "300-3400Hz_share": 0.0146,
+        "3400-8000Hz_share": 0.0015
+      },
+      {
+        "segment": "speech_plus_noise",
+        "rms_dbfs": -23.62,
+        "peak_dbfs": -6.15,
+        "samples": 192000,
+        "0-300Hz_share": 0.4075,
+        "300-3400Hz_share": 0.5867,
+        "3400-8000Hz_share": 0.0029
+      },
+      {
+        "segment": "quiet_voice",
+        "rms_dbfs": -47.99,
+        "peak_dbfs": -29.79,
+        "samples": 353760,
+        "0-300Hz_share": 0.3306,
+        "300-3400Hz_share": 0.6438,
+        "3400-8000Hz_share": 0.0166
+      },
+      {
+        "segment": "tail",
+        "rms_dbfs": -Infinity,
+        "peak_dbfs": -Infinity,
+        "samples": 46560,
+        "0-300Hz_share": 0.0,
+        "300-3400Hz_share": 0.0,
+        "3400-8000Hz_share": 0.0
+      }
+    ]
+  },
+  {
+    "name": "stimulus-focus-only.wav",
+    "seconds": 25.24,
+    "whole_rms_dbfs": -30.95,
+    "whole_peak_dbfs": -5.61,
+    "lag_samples_vs_reference": 0,
+    "lag_ms_vs_reference": 0.0,
+    "correlation_vs_reference": 0.6565,
+    "segments": [
+      {
+        "segment": "room_or_silence",
+        "rms_dbfs": -Infinity,
+        "peak_dbfs": -Infinity,
+        "samples": 48000,
+        "0-300Hz_share": 0.0,
+        "300-3400Hz_share": 0.0,
+        "3400-8000Hz_share": 0.0
+      },
+      {
+        "segment": "beep",
+        "rms_dbfs": -20.19,
+        "peak_dbfs": -12.04,
+        "samples": 7200,
+        "0-300Hz_share": 0.0,
+        "300-3400Hz_share": 1.0,
+        "3400-8000Hz_share": 0.0
+      },
+      {
+        "segment": "gap",
+        "rms_dbfs": -Infinity,
+        "peak_dbfs": -Infinity,
+        "samples": 16800,
+        "0-300Hz_share": 0.0,
+        "300-3400Hz_share": 0.0,
+        "3400-8000Hz_share": 0.0
+      },
+      {
+        "segment": "speech",
+        "rms_dbfs": -29.76,
+        "peak_dbfs": -6.0,
+        "samples": 353760,
+        "0-300Hz_share": 0.2571,
+        "300-3400Hz_share": 0.731,
+        "3400-8000Hz_share": 0.0098
+      },
+      {
+        "segment": "noise",
+        "rms_dbfs": -94.55,
+        "peak_dbfs": -66.79,
+        "samples": 192000,
+        "0-300Hz_share": 0.1915,
+        "300-3400Hz_share": 0.5093,
+        "3400-8000Hz_share": 0.1276
+      },
+      {
+        "segment": "speech_plus_noise",
+        "rms_dbfs": -25.59,
+        "peak_dbfs": -5.61,
+        "samples": 192000,
+        "0-300Hz_share": 0.3872,
+        "300-3400Hz_share": 0.6004,
+        "3400-8000Hz_share": 0.0073
+      },
+      {
+        "segment": "quiet_voice",
+        "rms_dbfs": -87.68,
+        "peak_dbfs": -57.84,
+        "samples": 353760,
+        "0-300Hz_share": 0.0914,
+        "300-3400Hz_share": 0.6449,
+        "3400-8000Hz_share": 0.168
+      },
+      {
+        "segment": "tail",
+        "rms_dbfs": -Infinity,
+        "peak_dbfs": -Infinity,
+        "samples": 48000,
+        "0-300Hz_share": 0.0,
+        "300-3400Hz_share": 0.0,
+        "3400-8000Hz_share": 0.0
+      }
+    ]
+  }
+]

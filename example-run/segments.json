@@ -1,0 +1,75 @@
+{
+  "sample_rate": 48000,
+  "samples": 1211520,
+  "seconds": 25.24,
+  "speech_text": "This is a microphone test. One person is speaking in a clear voice. The words should stay understandable when the noise is removed.",
+  "quiet_voice": "same utterance as speech, peak set 20 dB lower",
+  "speech_plus_noise_scale": 1.0,
+  "note": "file_rms_dbfs is the digital playback file, not the microphone",
+  "segments": [
+    {
+      "name": "room_or_silence",
+      "start": 0,
+      "end": 48000,
+      "seconds": 1.0,
+      "file_rms_dbfs": null,
+      "file_peak_dbfs": null
+    },
+    {
+      "name": "beep",
+      "start": 48000,
+      "end": 55200,
+      "seconds": 0.15,
+      "file_rms_dbfs": -15.05,
+      "file_peak_dbfs": -12.04
+    },
+    {
+      "name": "gap",
+      "start": 55200,
+      "end": 72000,
+      "seconds": 0.35,
+      "file_rms_dbfs": null,
+      "file_peak_dbfs": null
+    },
+    {
+      "name": "speech",
+      "start": 72000,
+      "end": 425760,
+      "seconds": 7.37,
+      "file_rms_dbfs": -23.32,
+      "file_peak_dbfs": -6.0
+    },
+    {
+      "name": "noise",
+      "start": 425760,
+      "end": 617760,
+      "seconds": 4.0,
+      "file_rms_dbfs": -32.64,
+      "file_peak_dbfs": -18.0
+    },
+    {
+      "name": "speech_plus_noise",
+      "start": 617760,
+      "end": 809760,
+      "seconds": 4.0,
+      "file_rms_dbfs": -22.64,
+      "file_peak_dbfs": -5.61
+    },
+    {
+      "name": "quiet_voice",
+      "start": 809760,
+      "end": 1163520,
+      "seconds": 7.37,
+      "file_rms_dbfs": -43.32,
+      "file_peak_dbfs": -26.0
+    },
+    {
+      "name": "tail",
+      "start": 1163520,
+      "end": 1211520,
+      "seconds": 1.0,
+      "file_rms_dbfs": null,
+      "file_peak_dbfs": null
+    }
+  ]
+}

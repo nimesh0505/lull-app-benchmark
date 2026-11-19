@@ -1,0 +1,18 @@
+rec
+audioctl
+__pycache__/
+*.pyc
+.DS_Store
+speech.aiff
+speech-raw.wav
+
+# A run writes microphone captures of the room to the repository root.
+# They are private to the machine that made them and must not be committed.
+/mic-*.wav
+/mic-*.wav.log
+/lull-*.log
+/stimulus.wav
+/stimulus-*.wav
+/segments.json
+/metrics.json
+/RESULTS.txt
