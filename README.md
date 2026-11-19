@@ -1,14 +1,46 @@
-# Lull offline benchmark
+<p align="center">
+  <img src="docs/lull-logo.png" alt="Lull" width="300">
+</p>
 
-A repeatable check of [Lull](https://github.com/psanders/lull) 0.1.0, the open-source macOS noise-cancellation app. It runs a generated clip through Lull's offline engine and measures what each stage does to the speech and the noise.
+<h1 align="center">Lull offline benchmark</h1>
 
-No microphone is used, so no room audio is recorded. Everything here can be re-run and checked from this repository.
+<p align="center">
+  Does <a href="https://github.com/psanders/lull">Lull</a> remove the noise without losing the voice?<br>
+  This repo answers that with a test you can run yourself. No microphone, no room recording.
+</p>
 
-Lull is not included. Install it from its [releases](https://github.com/psanders/lull/releases) first.
+---
 
-## Result
+## Quick start
 
-Machine: MacBook Air, Apple Silicon, macOS 26.6.1, Lull 0.1.0. Levels are RMS in dBFS, where a more negative number is quieter. The change column is Lull's output minus the clean clip.
+1. Install [Lull](https://github.com/psanders/lull/releases) to `/Applications/Lull.app`.
+2. Run the test:
+
+   ```sh
+   python3 -m pip install -r requirements.txt
+   ./run_offline.sh
+   ```
+
+3. Listen to the difference:
+
+   ```sh
+   afplay example-run/stimulus.wav        # clean clip, with noise and a second, quieter voice
+   afplay example-run/stimulus-lull.wav   # the same clip after Lull
+   ```
+
+The run takes about 3 seconds and writes `metrics.json` to the repo folder.
+
+## What it shows
+
+| Question | Answer |
+| --- | --- |
+| How much noise does Lull remove? | About **31 dB** from the noise-only part of the clip. |
+| Does the voice stay intact? | Yes. The speech changes by **0.17 dB**, a change too small for most listeners to notice. |
+| What happens to the quieter second voice? | It drops by **27 dB**. |
+| What does it cost? | A **30 ms** delay. |
+| Is there a trade-off? | Voice focus on its own lowers the speech by **6.44 dB**. With noise removal first, the speech change is only 0.17 dB. |
+
+Levels are RMS in dBFS. A more negative number is quieter. Each row shows the clean clip, Lull's full output, and two single-stage versions.
 
 | Part of the clip | Clean clip | Full Lull | Change | Noise removal only | Change | Voice focus only | Change |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -18,58 +50,40 @@ Machine: MacBook Air, Apple Silicon, macOS 26.6.1, Lull 0.1.0. Levels are RMS in
 | Quieter sentence | −43.33 | −70.23 | −26.90 | −47.99 | −4.66 | −87.68 | −44.35 |
 | Silence before the clip | digital silence | −92.54 | — | −92.54 | — | digital silence | — |
 
-“Full Lull” is the default. “Noise removal only” runs with `--no-focus`, and “Voice focus only” runs with `--no-nc`.
+“Full Lull” is the default. “Noise removal only” runs with `--no-focus`. “Voice focus only” runs with `--no-nc`.
 
 Other measurements:
 
 - **Delay.** The full chain and the noise-removal stage add 30 ms. Voice focus alone adds none.
-- **Shape match.** After alignment, the full output correlates 0.917 with the clean clip, noise removal alone 0.922, and voice focus alone 0.657.
+- **Shape match.** After alignment, the full output correlates 0.917 with the clean clip. Noise removal alone gives 0.922 and voice focus alone gives 0.657.
 
-The noise-removal stage does most of the noise reduction. Voice focus, which runs on the denoised signal, takes the quieter sentence down further. On its own, voice focus lowers the speech by 6.44 dB. In the full chain the speech change is only −0.17 dB, because the noise-removal stage runs first.
+Noise removal does most of the noise reduction. Voice focus runs on the denoised signal and takes the quieter sentence down further.
 
-The full table is in [`example-run/metrics.json`](example-run/metrics.json). The offline run log is [`example-run/lull-file.log`](example-run/lull-file.log).
+The full numbers are in [`example-run/metrics.json`](example-run/metrics.json). The run log is [`example-run/lull-file.log`](example-run/lull-file.log).
 
-## What was played
+## What the test plays
 
 `prepare.py` builds the clip, a 48 kHz mono file:
 
 1. One second of silence.
 2. A short 1 kHz beep, used only as an alignment mark.
-3. One sentence from `say`, peak-normalized to −6 dBFS: “This is a microphone test. One person is speaking in a clear voice. The words should stay understandable when the noise is removed.”
+3. One sentence from macOS `say`, peak-normalized to −6 dBFS: “This is a microphone test. One person is speaking in a clear voice. The words should stay understandable when the noise is removed.”
 4. Four seconds of low-passed noise, peak −18 dBFS.
 5. The sentence mixed with that noise.
 6. The same sentence again, peak −26 dBFS.
 7. One second of silence.
 
-`measure.py` lines each processed file up with the clean clip by cross-correlation, then reports each slice's level. The lag finder is checked on a synthetic shift of 1234 samples before the clip is built.
-
-## Run it
-
-Requirements: macOS 13 or later, Apple Silicon, Python 3 with numpy, and Lull installed at `/Applications/Lull.app`.
-
-```sh
-python3 -m pip install -r requirements.txt
-./run_offline.sh
-```
-
-The script takes about 3 seconds. It runs the clip through Lull three times (full, noise removal only, voice focus only), writes the processed clips and `metrics.json` to the repository root, and does not touch `example-run/`. Those root files are git-ignored.
-
-Listen to the clean clip and the full Lull output:
-
-```sh
-afplay example-run/stimulus.wav
-afplay example-run/stimulus-lull.wav
-```
+`measure.py` lines each processed file up with the clean clip by cross-correlation, then reports each part's level. The alignment is checked on a synthetic shift of 1234 samples before the clip is built.
 
 ## Files
 
 | Path | What it is |
 | --- | --- |
-| `run_offline.sh` | Runs the offline benchmark end to end. |
+| `run_offline.sh` | Runs the whole offline test. |
 | `prepare.py` | Builds `stimulus.wav` and `segments.json`. |
 | `measure.py` | Aligns each processed file to the clean clip and prints the levels. |
 | `example-run/stimulus.wav` | The clean clip. |
-| `example-run/stimulus-lull.wav` | Lull's full output for the clip. |
+| `example-run/stimulus-lull.wav` | Lull's full output. |
 | `example-run/stimulus-nc-only.wav` | Lull with voice focus off. |
 | `example-run/stimulus-focus-only.wav` | Lull with noise removal off. |
 | `example-run/segments.json` | Where each part of the clip sits in time. |
@@ -77,10 +91,14 @@ afplay example-run/stimulus-lull.wav
 
 ## Live microphone test (not validated)
 
-The repository also has scripts that play the clip through the speakers and record the microphone with Lull off and on: `run_test.sh`, `rec.swift`, `audioctl.swift`, `summarize.py`. They are not part of the benchmark above and produce no published results.
+The repo also has scripts that play the clip through the speakers and record the microphone with Lull off and on: `run_test.sh`, `rec.swift`, `audioctl.swift`, `summarize.py`. They are not part of the benchmark above and produce no published results.
 
-They record whatever the room sounds like during the test, so the captures can contain speech from people nearby. Run them only in a room where nobody is nearby, and do not share the captures in the repository root (git-ignored) unless you have checked them. The most recent live run failed its own checks, so the live path is unproven. Do not rely on it until a run passes: the printed correlation must be at least 0.3, and speech must be clearly above the room in both takes.
+They record whatever the room sounds like during the test, so the captures can contain speech from people nearby. Run them only where nobody else is around, and do not share the captures in the repo folder (they are git-ignored). The most recent live run failed its own checks, so the live path is unproven. A run only counts if the printed correlation is at least 0.3 and speech is clearly above the room in both takes.
 
 ## Limits
 
-This measures Lull's offline engine on one generated clip with one voice, not the live app. Live microphone behaviour, latency through a meeting app, and behaviour with real speakers and real rooms are not measured here. The numbers are for Lull 0.1.0 and may change in later versions.
+This measures Lull's offline engine on one generated clip with one voice. It does not measure the live app, meeting-app latency, or real rooms. The numbers are for Lull 0.1.0 and may change in later versions.
+
+## Credits
+
+Lull is by [psanders](https://github.com/psanders), MIT licensed. The logo in `docs/` comes from the Lull repository.
